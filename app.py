@@ -8,7 +8,6 @@ from flask import Flask, render_template, request
 import joblib
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key' 
 
 # Load the trained components
 vectorizer = joblib.load('vectorizer.pkl')
@@ -29,11 +28,14 @@ def predict():
     selected_text = selector.transform(vectorized_text)
     
     # Predict sentiment
-    sentiment = model.predict(selected_text)[0]
+    sentiment_code = model.predict(selected_text)[0]
+    sentiment = "Positive" if sentiment_code == 1 else "Neutral" if sentiment_code == 0 else "Negative"
     
-    # Render the result page with sentiment
-    return render_template('result.html', text=text, sentiment=sentiment)
+    # Dynamic background color for sentiments
+    bg_color = "green" if sentiment == "Positive" else "yellow" if sentiment == "Neutral" else "red"
+    
+    # Render the result page with variables
+    return render_template('result.html', text=text, sentiment=sentiment, bg_color=bg_color)
 
 if __name__ == '__main__':
     app.run(debug=True)
-

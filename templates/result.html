@@ -4,10 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        /* General Body Styles */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: {{ bg_color }};
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        /* Box Container Styles */
+        .box {
+            background-color: white;
+            width: 70%;
+            max-width: 800px;
+            min-height: 300px; /* Increased height */
+            padding: 40px; /* Added more padding */
+            text-align: left;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Space between content and button */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        p {
+            font-size: 1.3rem;
+            color: #555;
+            margin-bottom: 10px; /* Reduced space between paragraphs */
+        }
+
+        strong {
+            color: #333;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 1rem; /* Restored smaller size */
+            font-weight: bold;
+            padding: 8px 20px; /* Smaller padding */
+            border-radius: 5px;
+            color: white;
+            background-color: #007BFF;
+            transition: background-color 0.3s ease;
+            text-align: center;
+            align-self: center; /* Center button horizontally */
+            margin-top: 20px; /* Added space before the button */
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
+    <div class="box">
         <h1>Sentiment Analysis Result</h1>
         <p><strong>Input Text:</strong> {{ text }}</p>
         <p><strong>Predicted Sentiment:</strong> {{ sentiment }}</p>

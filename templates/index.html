@@ -3,16 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Twitter Sentiment Analysis</title>
+    <title>Sentiment Analyser</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
-    <div class="container">
-        <h1>Twitter Sentiment Analysis</h1>
-        <form action="/predict" method="POST">
-            <textarea name="text" placeholder="Enter your tweet here..." required></textarea>
-            <button type="submit">Analyze Sentiment</button>
-        </form>
+<body style="background-color: #f2e8e8;"> <!-- Added light background color -->
+    <div class="container full-screen">
+        <header>
+            <h1>Sentiment Analyser</h1>
+        </header>
+        <main class="content-grid">
+            <!-- Left column -->
+            <div class="left-section" style="padding-right: 20px;"> <!-- Added space between left and right columns -->
+                <blockquote class="quote">"Say something, and I will tell your tone!"</blockquote>
+                <form action="/predict" method="POST" class="form">
+                    <textarea name="text" placeholder="Enter your text here..." required></textarea>
+                    <button type="submit">Analyze Sentiment</button>
+                </form>
+                <section class="definition">
+                    <h2>Want to know more about this?</h2>
+                    <p>In this project I have used SVM</p>
+                </section>
+
+            </div>
+            <!-- Right column -->
+            <div class="right-section" style="padding-left: 20px;"> <!-- Added space between left and right columns -->
+                <section class="definition">
+                    <h2>What is Sentiment Analysis?</h2>
+                    <p>
+                        Sentiment Analysis is a method of determining the tone or emotion behind a piece of text.
+                        It can categorize text as Positive, Neutral, or Negative based on the sentiment.
+                        <br>
+                    </p>
+
+                </section>
+
+                <section class="samples">
+                    <h2>Sample Sentences:</h2>
+                    <ul>
+                        <li>"I am so happy with the new update, it's fantastic!"</li>
+                        <li>"This is the worst experience I've ever had. Truly disappointing."</li>
+                        <li>"I am not going to the grocery store today"</li>
+                        <li>"Absolutely love this! Highly recommended."</li>
+                        <li>"Neutral on this one, Its ok"</li>
+                        <li>I am not going to the grocery store today, yesterday I had a terrible experience</li>
+                    </ul>
+                </section>
+
+
+            </div>
+        </main>
     </div>
+
+    <!-- Footer with copyright -->
+    <footer style="text-align: center; padding: 10px; font-size: 1rem; color: #f5f5f5; background-color: #2793ae;">
+        &copy; 2025 Sentiment Analyser. All rights reserved.
+    </footer>
 </body>
 </html>

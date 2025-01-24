@@ -1,55 +1,76 @@
+/* General styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
     margin: 0;
-    padding: 0;
-}
-
-.container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
+    font-family: 'Arial', sans-serif;
     color: #333;
 }
 
-form {
+.container {
+    padding: 20px;
+}
+
+.full-screen {
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
-textarea {
-    height: 100px;
-    margin-bottom: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    resize: none;
-}
-
-button {
-    background-color: #5cb85c;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #4cae4c;
-}
-
-a {
-    display: block;
-    margin-top: 20px;
+header h1 {
     text-align: center;
-    color: #007bff;
-    text-decoration: none;
+    color: #2793ae;
+    font-size: 3.5rem;
+    margin-bottom: 30px;
+}
+
+/* Grid Layout */
+.content-grid {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.left-section, .right-section {
+    flex: 1;
+}
+
+/* Quotes */
+blockquote.quote {
+    font-size: 1.6rem;
+    font-style: italic;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Form */
+form textarea {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+/* Definition and Samples */
+.definition h2, .samples h2 {
+    color: #6b6da7;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.definition p, .samples ul {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.samples ul li {
+    margin-bottom: 5px;
 }
