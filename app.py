@@ -11,9 +11,9 @@ app = Flask(__name__)
 app.secret_key = 'your_secret_key' 
 
 # Load the trained components
-vectorizer = joblib.load('C:/Users/Lenovo/Downloads/Sentiment Analysis Pro/vectorizer.pkl')
-selector = joblib.load('C:/Users/Lenovo/Downloads/Sentiment Analysis Pro/selector.pkl')
-model = joblib.load('C:/Users/Lenovo/Downloads/Sentiment Analysis Pro/svm_sentiment_model.pkl')
+vectorizer = joblib.load('vectorizer.pkl')
+selector = joblib.load('selector.pkl')
+model = joblib.load('svm_sentiment_model.pkl')
 
 @app.route('/')
 def index():
