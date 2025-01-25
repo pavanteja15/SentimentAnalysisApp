@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Prediction Result</title>
     <style>
-        /* General Body Styles */
         body {
             margin: 0;
             font-family: 'Arial', sans-serif;
@@ -17,54 +16,82 @@
             transition: background-color 0.3s ease-in-out;
         }
 
-        /* Box Container Styles */
         .box {
             background-color: white;
             width: 70%;
             max-width: 800px;
-            min-height: 300px; /* Increased height */
-            padding: 40px; /* Added more padding */
-            text-align: left;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Space between content and button */
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            color: #333;
-            margin-bottom: 20px;
             text-align: center;
         }
 
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: #2793ae;
+        }
+
         p {
-            font-size: 1.3rem;
-            color: #555;
-            margin-bottom: 10px; /* Reduced space between paragraphs */
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-align: left;
         }
 
         strong {
             color: #333;
         }
 
-        a {
-            text-decoration: none;
-            font-size: 1rem; /* Restored smaller size */
-            font-weight: bold;
-            padding: 8px 20px; /* Smaller padding */
-            border-radius: 5px;
+        .analyze-button {
+            display: inline-block;
+            background-color: #4CAF50;
             color: white;
-            background-color: #007BFF;
-            transition: background-color 0.3s ease;
-            text-align: center;
-            align-self: center; /* Center button horizontally */
-            margin-top: 20px; /* Added space before the button */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 20px;
         }
 
-        a:hover {
-            background-color: #0056b3;
+        .feedback-message {
+            font-size: 1.2rem;
+            color: green;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        form {
+            margin-top: 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-align: left;
+            width: 100%;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            max-width: 750px;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -73,7 +100,30 @@
         <h1>Sentiment Analysis Result</h1>
         <p><strong>Input Text:</strong> {{ text }}</p>
         <p><strong>Predicted Sentiment:</strong> {{ sentiment }}</p>
-        <a href="/">Analyze Another Tweet</a>
+        <a href="/" class="analyze-button">Analyze Another Tweet</a>
+        
+        <hr>
+        {% if feedback_submitted %}
+            <p class="feedback-message">Your feedback submitted successfully</p>
+        {% else %}
+            <h2>Help Us Improve</h2>
+            <p>Please give us your valuable feedback or if you think the generated output is wrong, please fill out this form to help us improve.</p>
+            <form action="/send_message" method="POST">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+
+                <input type="hidden" name="text" value="{{ text }}">
+                <input type="hidden" name="sentiment" value="{{ sentiment }}">
+
+                <button type="submit">Submit</button>
+            </form>
+        {% endif %}
     </div>
 </body>
 </html>

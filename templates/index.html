@@ -5,15 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentiment Analyser</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        .social-icons {
+            display: flex;
+            justify-content: left;
+            gap: 25px; /* Space between icons */
+            margin-top: 10px;
+        }
+
+        .social-icons a img {
+            width: 30px; /* Make icons small */
+            height: 30px;
+            transition: transform 0.2s; /* Add hover effect */
+        }
+
+        .social-icons a img:hover {
+            transform: scale(1.2); /* Slightly enlarge icons on hover */
+        }
+    </style>
 </head>
-<body style="background-color: #f2e8e8;"> <!-- Added light background color -->
+<body style="background-color: #ede8e8;">
     <div class="container full-screen">
         <header>
             <h1>Sentiment Analyser</h1>
         </header>
         <main class="content-grid">
-            <!-- Left column -->
-            <div class="left-section" style="padding-right: 20px;"> <!-- Added space between left and right columns -->
+            <div class="left-section" style="padding-right: 20px;">
                 <blockquote class="quote">"Say something, and I will tell your tone!"</blockquote>
                 <form action="/predict" method="POST" class="form">
                     <textarea name="text" placeholder="Enter your text here..." required></textarea>
@@ -21,40 +38,55 @@
                 </form>
                 <section class="definition">
                     <h2>Want to know more about this?</h2>
-                    <p>In this project I have used SVM</p>
+                    <ul>
+                        <li>Here's my research <a href="https://doi.org/10.1007/978-981-97-4928-7_27" target="_blank"> paper</a></li>
+                        <li>If you don’t have access to the above paper, feel free to access it from <a href="https://drive.google.com/file/d/1gsJUavnmgFqlpoSBmlmYO8IimbiNpqRb/view?usp=sharing" target="_blank">here</a>.</li>
+                    </ul>
+                    <h2>Contact Me</h2>
+                    <div class="social-icons">
+                        <a href="https://www.linkedin.com/in/pavan-teja-medi/" target="_blank">
+                            <img src="{{ url_for('static', filename='images/linkedin.png') }}" alt="LinkedIn">
+                        </a>
+                        <a href="https://github.com/pavanteja15" target="_blank">
+                            <img src="{{ url_for('static', filename='images/github.png') }}" alt="GitHub">
+                        </a>
+                        <a href="mailto:pavanteja1515@gmail.com" target="_blank">
+                            <img src="{{ url_for('static', filename='images/gmail.png') }}" alt="Gmail">
+                        </a>
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <img src="{{ url_for('static', filename='images/Instagram.png') }}" alt="Instagram">
+                        </a>
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <img src="{{ url_for('static', filename='images/facebook.png') }}" alt="Facebook">
+                        </a>
+                        <a href="https://x.com/i/flow/login?lang=en" target="_blank">
+                            <img src="{{ url_for('static', filename='images/Twitter.png') }}" alt="Twitter">
+                        </a>
+                    </div>
                 </section>
-
             </div>
-            <!-- Right column -->
-            <div class="right-section" style="padding-left: 20px;"> <!-- Added space between left and right columns -->
+            <div class="right-section" style="padding-left: 20px;">
                 <section class="definition">
                     <h2>What is Sentiment Analysis?</h2>
                     <p>
                         Sentiment Analysis is a method of determining the tone or emotion behind a piece of text.
                         It can categorize text as Positive, Neutral, or Negative based on the sentiment.
-                        <br>
                     </p>
-
                 </section>
-
                 <section class="samples">
                     <h2>Sample Sentences:</h2>
                     <ul>
                         <li>"I am so happy with the new update, it's fantastic!"</li>
                         <li>"This is the worst experience I've ever had. Truly disappointing."</li>
-                        <li>"I am not going to the grocery store today"</li>
+                        <li>"I am not going to the grocery store today."</li>
                         <li>"Absolutely love this! Highly recommended."</li>
-                        <li>"Neutral on this one, Its ok"</li>
-                        <li>I am not going to the grocery store today, yesterday I had a terrible experience</li>
+                        <li>"Neutral on this one. It's okay."</li>
+                        <li>"I am not going to the grocery store today; yesterday I had a terrible experience."</li>
                     </ul>
                 </section>
-
-
             </div>
         </main>
     </div>
-
-    <!-- Footer with copyright -->
     <footer style="text-align: center; padding: 10px; font-size: 1rem; color: #f5f5f5; background-color: #2793ae;">
         &copy; 2025 Sentiment Analyser. All rights reserved.
     </footer>
